@@ -23,3 +23,4 @@ System wspiera **klientów**, **trenerów** oraz **administratorów**, ułatwiaj
 - **C# / .NET**  
 - **WPF** (Windows Presentation Foundation)  
 - **Baza danych:** 
+<img width="1841" height="1262" alt="Diagram_przypadkow_uzycia drawio" src="https://github.com/user-attachments/assets/1915e2df-67f2-4973-887b-46bc251c4306" />
