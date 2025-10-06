@@ -1,6 +1,6 @@
 # 🏋️‍♂️ Gym Management System  
 
-Aplikacja do zarządzania siłownią stworzona w **C# (WPF)**.  
+Aplikacja do zarządzania siłownią stworzona w **C#**.  
 System wspiera **klientów**, **trenerów** oraz **administratorów**, ułatwiając obsługę zapisów, planów treningowych, płatności oraz zarządzanie użytkownikami i zasobami siłowni.  
 
 ---
