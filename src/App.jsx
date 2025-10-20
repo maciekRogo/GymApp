@@ -3,6 +3,10 @@ import ReactDOM from "react-dom/client";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import LandingPage from "./pages/LandingPage.jsx";
 import Register from "./Pages/Register.jsx";
+import Reservation from "./Pages/Reservation.jsx";
+import Settings from "./Pages/Settings.jsx";
+import Reports from "./Pages/Reports.jsx";
+import Training from "./Pages/Training.jsx";
 
 
 const App = () => {
@@ -10,6 +14,10 @@ const App = () => {
         <BrowserRouter>
             <Routes>
                 <Route path={"/register"} element={<Register/>} />
+                <Route path={"/reservation"} element={<Reservation/>} />
+                <Route path={"/settings"} element={<Settings/>} />
+                <Route path={"/reports"} element={<Reports/>} />
+                <Route path={"/training"} element={<Training/>} />
                 <Route path={"/"} element={<LandingPage/>} />
 
             </Routes>

@@ -14,11 +14,11 @@ const Nav = () => {
         <div>
             <nav>
                 <ul>
-                    <li><Link to="/"><img src={training} alt="icon" /></Link></li>
-                    <li><Link to="/"><img src={reservation} alt="icon" /></Link></li>
+                    <li><Link to="/training"><img src={training} alt="icon" /></Link></li>
+                    <li><Link to="/reservation"><img src={reservation} alt="icon" /></Link></li>
                     <li><Link to="/"><img src={home} alt="icon" /></Link></li>
-                    <li><Link to="/"><img src={reports} alt="icon" /></Link></li>
-                    <li><Link to="/"><img src={settings} alt="icon" /></Link></li>
+                    <li><Link to="/reports"><img src={reports} alt="icon" /></Link></li>
+                    <li><Link to="/settings"><img src={settings} alt="icon" /></Link></li>
                 </ul>
             </nav>
         </div>
