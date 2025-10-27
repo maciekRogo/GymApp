@@ -1,12 +1,13 @@
 import React from 'react';
 import Nav from "../Components/Nav.jsx";
 
-const LandingPage = () => {
+const Training = () => {
     return (
-        <>
+        <div>
             <Nav/>
-        </>
+            trening
+        </div>
     );
 };
 
-export default LandingPage;
+export default Training;

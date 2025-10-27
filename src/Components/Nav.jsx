@@ -1,35 +1,28 @@
-// import React, { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
-// import NavMobile from "./NavMobile.jsx";
-// import styles from "../css/Nav.module.css";
-// const Nav = () => {
-//     // const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-//     //
-//     // useEffect(() => {
-//     //     const handleResize = () => setIsMobile(window.innerWidth < 768);
-//     //     window.addEventListener('resize', handleResize);
-//     //     return () => window.removeEventListener('resize', handleResize);
-//     // }, []);
-//     //
-//     // if (isMobile) {
-//     //     return <NavMobile />;
-//     // }
-//
-//     return (
-//         <div>
-//             <nav>
-//                 <img src="../img/img.png" alt="Logo" />
-//                 <ul>
-//                     <li><Link to="/">Strona główna</Link></li>
-//                     <li><Link to="/cennik">Cennik</Link></li>
-//                     <li><Link to="/portfolio">Portfolio</Link></li>
-//                     <li><Link to="/zaufali">Zaufali mi</Link></li>
-//                     <li><Link to="/omnie">O mnie</Link></li>
-//                     <li><Link to="/kontakt">Kontakt</Link></li>
-//                 </ul>
-//             </nav>
-//         </div>
-//     );
-// };
-//
-// export default Nav;
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styles from '../Components/css/Nav.module.css';
+import home from "../Components/img/homeic.svg"
+import training from "../Components/img/dumbell.svg"
+import reservation from "../Components/img/note.svg"
+import settings from "../Components/img/settings.svg"
+import reports from "../Components/img/reports.svg"
+
+const Nav = () => {
+
+
+    return (
+        <div>
+            <nav>
+                <ul>
+                    <li><Link to="/training"><img src={training} alt="icon" /></Link></li>
+                    <li><Link to="/reservation"><img src={reservation} alt="icon" /></Link></li>
+                    <li><Link to="/"><img src={home} alt="icon" /></Link></li>
+                    <li><Link to="/reports"><img src={reports} alt="icon" /></Link></li>
+                    <li><Link to="/settings"><img src={settings} alt="icon" /></Link></li>
+                </ul>
+            </nav>
+        </div>
+    );
+};
+
+export default Nav;
