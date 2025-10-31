@@ -4,6 +4,7 @@ import Nav from "../Components/Nav.jsx";
 
 // APLIKACJA MA DWA KOMPONENTY, USER PROFIL KTORY DOCELOWO BEDZIE POBIERAC INFORMACJE Z BAZY DNAYCH ORAZ USTAWIENIA OGOLNE KTORE TRZEBA BEDZIE ZAPISYWAC
 
+// nie uzywajcie chatagpt wklejajac bezmyslnie kod z chata bo potem sa bledy i nie dziala
 
 
 const UserProfile = ({ userName, userImage }) => {

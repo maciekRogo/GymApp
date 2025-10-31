@@ -2,7 +2,6 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-
     background-color: #1e1e1e;
     position: fixed;
     bottom: 0;
@@ -10,7 +9,6 @@ nav {
     padding: 1vh 0;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    margin-left: -1vw;
 }
 
 ul {
