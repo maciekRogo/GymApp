@@ -1,12 +1,4 @@
-body {
-    justify-content: center;
-    align-items: center;
-    background: #0F0F0F;
-    display: flex;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
-}
+
 
 .container {
     display: flex;
