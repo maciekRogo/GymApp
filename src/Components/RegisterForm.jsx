@@ -3,7 +3,7 @@ import style from "../Components/css/RegisterForm.module.css";
 const RegisterForm = () => {
     return (
         <div className={style.naglowek}>
-            <h1>Register Form</h1>
+            <h1>Rejestracja</h1>
             <form className={style.form}>
                 <a href="/auth/login">Login</a>
                 <input type="text" placeholder="Username" className={style.input}/>

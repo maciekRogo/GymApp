@@ -1,3 +1,75 @@
-.naglowek{
-    background-color: red;
+.naglowek {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #1E1E1E;
+    color: #F5F5F5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #00A3FF;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+a {
+    color: #00A3FF;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #007ACC;
+}
+
+.input {
+    background-color: #2E2E2E;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    color: #F5F5F5;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input:focus {
+    border-color: #00A3FF;
+}
+
+.button {
+    background-color: #00A3FF;
+    color: #F5F5F5;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #007ACC;
+    transform: scale(1.05);
+}
+
+.button:active {
+    transform: scale(0.95);
 }
