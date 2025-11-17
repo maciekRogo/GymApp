@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Nav from "../Components/Nav.jsx";
-
+import profile_pic from "../Components/img/porfile_picture_default.jpg"
 //co do bledow z chata to sie je przeglada a jak juz wystepuja to rzadko, a tak poza tym to powiedz jakie bledy a sie je naprawi a nie narzekasz bezsensownie tym bardziej ZE JEDYNY BLAD TO PIEPRZONA IKONA KTORA BYLA ZAZNACZONA W KOMENTARZACH BO INACZEJ MIALBYS 1000 WIECEJ BLEDOW, ale ogolnie rozumiem ze mogles nie zrozumiec bo jak widzisz randomowy link do byle czego to juz masz zawal serca i z niczym ci sie nie kojarzu jednak to bylo najlepsze rozwiazanie na "szybko:
 
 // ogolnie to kod jest nieprzejrzysty ale nie chcialem robic smietnika w globalnym css bez wstepnych, ogolnie na rozmiar tego projektu ograniczyl bym sie do prostej moze czasami bardziej pracochlonnej strukturu bo sama analiza tych cssow zajmuje wiecej czasu niz robienie ich na "rzeznika"
 const Settings = () => {
-    const [userName, setUserName] = useState("Jan Kowalski");
+    const [userName] = useState("Robert Świder");
     //PONIZEJ TA MAJESATYCZNA IKONA PROWADZACA DO LINKU KTORY NIE MA ZNACZENIA BO JEST TYLKO PO TO ZEBY BYLO W PRZYSZLOSCI TO POBIERTANE Z BAZY DANYCH O ILE NIE ZMIENIMY PLANOW
-    const [userImage, setUserImage] = useState("https://via.placeholder.com/100");
+    //const [userImage, setUserImage] = useState("profile_pic");
     const [theme, setTheme] = useState("Ciemny");
     const [language, setLanguage] = useState("Polski");
     const [notifications, setNotifications] = useState(true);
@@ -52,7 +52,7 @@ const Settings = () => {
                     marginBottom: "30px"
                 }}>
                     <img
-                        src={userImage}
+                        src={profile_pic}
                         alt="Profil"
                         style={{ width: "80px", height: "80px", borderRadius: "50%" }}
                     />
