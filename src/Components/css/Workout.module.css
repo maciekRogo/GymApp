@@ -1,0 +1,31 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.header {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0 0 10px 0;
+    font-size: 36px;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.header p {
+    margin: 0;
+    font-size: 16px;
+    opacity: 0.7;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+/* Light theme */
+@media (prefers-color-scheme: light) {
+    .header h1,
+    .header p {
+        color: #242424;
+    }
+}

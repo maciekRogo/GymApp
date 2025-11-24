@@ -1,0 +1,33 @@
+.container {
+    margin-bottom: 40px;
+}
+
+.container h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.exerciseGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 60px 20px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 18px;
+}
+
+/* Light theme */
+@media (prefers-color-scheme: light) {
+    .container h2 {
+        color: #242424;
+    }
+
+    .emptyState {
+        color: rgba(0, 0, 0, 0.5);
+    }
+}

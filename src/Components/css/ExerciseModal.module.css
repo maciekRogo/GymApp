@@ -1,0 +1,265 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background-color: #0e141b;
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+.closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.closeButton:hover {
+    color: rgba(255, 255, 255, 0.87);
+    transform: rotate(90deg);
+}
+
+.modal h1 {
+    margin: 0 0 20px 0;
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.modal h2 {
+    margin: 30px 0 15px 0;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.modal h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.difficulty {
+    margin-bottom: 20px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.badge.difficulty-łatwe {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #4caf50;
+}
+
+.badge.difficulty-średnie {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+}
+
+.badge.difficulty-trudne {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #f44336;
+}
+
+.description {
+    background-color: rgba(74, 158, 255, 0.1);
+    border-left: 4px solid #4a9eff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.description p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 16px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.statItem {
+    text-align: center;
+}
+
+.statLabel {
+    display: block;
+    font-size: 12px;
+    opacity: 0.6;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.statValue {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #4a9eff;
+}
+
+.instructionSection ol {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: section;
+}
+
+.instructions li {
+    counter-increment: section;
+    margin-bottom: 12px;
+    padding-left: 40px;
+    position: relative;
+    color: rgba(255, 255, 255, 0.87);
+    line-height: 1.6;
+}
+
+.instructions li::before {
+    content: counter(section);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #4a9eff;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.tipsSection {
+    background-color: rgba(76, 175, 80, 0.1);
+    border-left: 4px solid #4caf50;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 30px 0;
+}
+
+.tipsSection p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
+}
+
+.startButton {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.startButton:hover {
+    background-color: #45a049;
+    transform: scale(1.02);
+}
+
+/* Light theme */
+@media (prefers-color-scheme: light) {
+    .modal {
+        background-color: #ffffff;
+    }
+
+    .modal h1,
+    .modal h2,
+    .modal h3 {
+        color: #242424;
+    }
+
+    .description {
+        background-color: rgba(0, 102, 204, 0.1);
+        border-color: #0066cc;
+    }
+
+    .description p,
+    .instructions li,
+    .tipsSection p {
+        color: #242424;
+    }
+
+    .badge {
+        color: #2980b9;
+    }
+
+    .stats {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .statValue {
+        color: #0066cc;
+    }
+
+    .instructions li::before {
+        background-color: #0066cc;
+    }
+
+    .tipsSection {
+        background-color: rgba(76, 175, 80, 0.1);
+    }
+
+    .startButton {
+        background-color: #27ae60;
+    }
+
+    .startButton:hover {
+        background-color: #229954;
+    }
+}
+
+/* Scrollbar styling */
+.modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background: #4a9eff;
+    border-radius: 10px;
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+    background: #357abd;
+}

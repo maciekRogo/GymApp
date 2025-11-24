@@ -6,7 +6,7 @@ import Register from "./Pages/Register.jsx";
 import Reservation from "./Pages/Reservation.jsx";
 import Settings from "./Pages/Settings.jsx";
 import Reports from "./Pages/Reports.jsx";
-import Training from "./Pages/Training.jsx";
+import Training from "./Pages/Workout/Training.jsx";
 
 
 const App = () => {
