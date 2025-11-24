@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 30vh;
+    height: auto;
     width: 90vw;
     background: #1E1E1E;
     border-radius: 20px;
@@ -15,11 +15,6 @@
     text-align: center;
     padding: 2vh;
     box-sizing: border-box;
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 5vh;
 }
 
 .progress {
@@ -44,7 +39,7 @@
 }
 
 h2 {
-    font-size: 4vh;
+    font-size: 2vh;
     margin-bottom: 1vh;
 }
 

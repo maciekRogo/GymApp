@@ -1,0 +1,27 @@
+.box {
+    max-width: 90vw;
+    height: auto;
+    background: #1E1E1E;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid #0F0F0F;
+    color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2vh;
+    box-sizing: border-box;
+    margin: 10px 0;
+}
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.details {
+    font-size: 1rem;
+    margin: 5px 0;
+}
