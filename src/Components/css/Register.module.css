@@ -1,45 +1,124 @@
+/* css
+File: `src/Components/css/Register.module.css` */
+
+/* zmienne dla szybkiej kontroli odstępów */
+:root {
+    --page-padding-vertical: 18px;
+    --page-padding-horizontal: 10px;
+    --gap: 20px; /* domyślny odstęp między sekcjami */
+    --logo-bottom-gap: 6px; /* mniejszy odstęp pod logo */
+    --max-grid-width: 980px;
+}
+
+/* kontener całej strony */
 .container {
     width: 100%;
     margin: 0 auto;
     min-height: 100vh;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     color: #F5F5F5;
     transform: none;
-    padding: 20px 10px;
+    padding: var(--page-padding-vertical) var(--page-padding-horizontal);
     box-sizing: border-box;
 }
 
+/* logo u góry, wyśrodkowane; mniejszy odstęp od dołu niż reszta */
 .logo {
     width: 160px;
-    margin: 10px auto 40px;
+    margin: 6px auto var(--logo-bottom-gap); /* mniejszy odstęp pod logo */
+    align-self: center;
+    display: block;
 }
 
+/* główna zawartość (pod logo) */
 .content {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: var(--gap);
     align-items: center;
+    box-sizing: border-box;
 }
 
+/* pasek postępu */
 .progress {
     width: 80%;
     display: flex;
     justify-content: center;
     padding: 0 10px;
     box-sizing: border-box;
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 
+/* siatka meetingów: dwa obok siebie; kolumny mogą się zmniejszać */
 .meetings {
     width: 90%;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+    max-width: var(--max-grid-width);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    gap: 16px;
     padding: 0;
     box-sizing: border-box;
+    justify-items: stretch;
+    align-items: start;
+    grid-auto-rows: minmax(0, auto);
+}
+
+/* wrapper pojedynczego meetingu */
+.meetingItem {
+    width: 100%;
+    margin: 0;
+    display: block;
+    min-width: 0; /* zapobiega overflow w gridzie przy małych szerokościach */
+}
+
+/* zawartość wrappera zajmuje całą szerokość kolumny */
+.meetingItem > * {
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+/* cytat rozciąga się na obie kolumny */
+.quoteWrapper {
+    grid-column: 1 / -1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 0;
+}
+
+.quoteWrapper > * {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* responsywność: utrzymaj dwie kolumny dopóki to sensowne */
+@media (max-width: 420px) {
+    .meetings {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+        gap: 12px;
+        width: 92%;
+    }
+
+    .logo {
+        width: 140px;
+    }
+}
+
+/* bardzo wąskie ekrany: przejdź na jedną kolumnę tylko poniżej tego progu */
+@media (max-width: 300px) {
+    .meetings {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* dodatkowe drobne poprawki dostępności / skalowania */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
 }

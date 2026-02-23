@@ -1,4 +1,4 @@
-/* src/Components/css/Meetings.module.css */
+/* File: src/Components/css/Meeting2.module.css */
 .box {
     width: 100%;
     max-width: none;
@@ -15,7 +15,7 @@
     text-align: center;
     padding: 2vh;
     box-sizing: border-box;
-    margin: 0; /* usunięte pionowe marginesy, żeby nie powodowały stackowania */
+    margin: 0;
 }
 
 .title {

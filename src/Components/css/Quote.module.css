@@ -1,0 +1,54 @@
+/* File: `src/Components/css/Quote.module.css` */
+.quoteBox {
+    width: 100%;
+    max-width: 720px; /* podobna szerokość jak Meetings, ale ograniczona */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px; /* mniejszy padding niż w Meetings, mniej wysokości */
+    box-sizing: border-box;
+    border-radius: 20px; /* dopasowane do Meetings */
+    background: linear-gradient(180deg, #232323, #1E1E1E); /* jak Meetings */
+    border: 1px solid #0F0F0F;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    text-align: center;
+    color: #F5F5F5;
+    font-family: Inter, Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
+    max-height: 12rem; /* ograniczona wysokość, żeby nie było zbyt wysokie */
+    overflow: hidden; /* ukrywa nadmiar treści */
+}
+
+.quoteText {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0 0 8px 0;
+    color: inherit;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* pokazuje mniej wierszy niż wcześniej */
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+    text-overflow: ellipsis;
+}
+
+.quoteAuthor {
+    font-size: 0.85rem;
+    opacity: 0.75;
+    color: inherit;
+    margin-top: 6px;
+}
+
+/* mniejsze ekrany: jeszcze mniejsze pudełko i krótszy clamp */
+@media (max-width: 420px) {
+    .quoteBox {
+        max-width: 92%;
+        padding: 10px;
+        max-height: 9rem;
+    }
+    .quoteText {
+        font-size: 0.92rem;
+        -webkit-line-clamp: 3; /* na telefonie pokazujemy mniej wierszy */
+    }
+}
