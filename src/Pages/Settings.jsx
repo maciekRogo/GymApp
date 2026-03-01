@@ -15,14 +15,25 @@ const Settings = () => {
     // Dobra to tak, zmiana koloru zmienia tylko kolor w body co znajduje sie ponizej
     useEffect(() => {
         if (theme === "Jasny") {
-            document.body.style.backgroundColor = "#f8f9fa";
-            document.body.style.color = "#242424";
+            document.documentElement.style.backgroundColor = "#f8f9fa";
+            document.documentElement.style.color = "#242424";
+
+            // Zmienne dla JASNEGO paska nawigacji
+            document.documentElement.style.setProperty('--nav-bg', '#ffffff');
+            document.documentElement.style.setProperty('--nav-icon-filter', 'none'); // oryginalny (ciemny) kolor ikon
+            document.documentElement.style.setProperty('--nav-shadow', '0 -2px 10px rgba(0, 0, 0, 0.1)');
+
         } else if (theme === "Ciemny") {
-            document.body.style.backgroundColor = "#242424";
-            document.body.style.color = "rgba(255, 255, 255, 0.87)";
+            document.documentElement.style.backgroundColor = "#242424";
+            document.documentElement.style.color = "rgba(255, 255, 255, 0.87)";
+
+            // Zmienne dla CIEMNEGO paska nawigacji
+            document.documentElement.style.setProperty('--nav-bg', '#1e1e1e');
+            document.documentElement.style.setProperty('--nav-icon-filter', 'brightness(0) invert(1)'); // białe ikony
+            document.documentElement.style.setProperty('--nav-shadow', '0 -2px 10px rgba(0, 0, 0, 0.3)');
         }
 
-        // zapis do local storage (ta klasyczna linijka kodu po ktorej skasowaniu program robi fikolka)
+        // zapis do local storage
         localStorage.setItem('theme', theme);
     }, [theme]);
 
