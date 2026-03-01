@@ -4,16 +4,46 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --backgroundDark:"#0e141b";
-  --blue:"#038a69";
-  --blueLighter:"#235586";
-  --blueLightest:"#3c6997";
+  --bg-color: #242424;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --nav-bg: #1e1e1e;
+  --nav-icon-filter: brightness(0) invert(1);
+  --nav-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  --backgroundDark: #0e141b;
+  --blue: #038a69;
+  --blueLighter: #235586;
+  --blueLightest: #3c6997;
+  --card-bg: #1e1e1e;
+  --card-bg-gradient: linear-gradient(180deg, #232323, #1e1e1e);
+  --input-bg: #2e2e2e;
+  --border-color: #444444;
+  --muted-text: rgba(245,245,245,0.7);
 }
 
+
+/*zmienne dla jasnego rtybu*/
+[data-theme="light"] {
+  --bg-color: #f8f9fa;
+  --text-color: #242424;
+  --nav-bg: #ffffff;
+  --nav-icon-filter: none;
+  --nav-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  color-scheme: light;
+  --card-bg: #ffffff;
+  --card-bg-gradient: linear-gradient(180deg, #ffffff, #f0f0f0);
+  --input-bg: #ffffff;
+  --border-color: #dddddd;
+  --muted-text: #666666;
+}
+
+/*globalne kolory na body*/
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Płynne przejście między motywami */
+}

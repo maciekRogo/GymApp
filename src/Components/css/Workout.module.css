@@ -22,10 +22,7 @@
     color: rgba(255, 255, 255, 0.87);
 }
 
-/* Light theme */
-@media (prefers-color-scheme: light) {
-    .header h1,
-    .header p {
-        color: #242424;
-    }
+:global([data-theme="light"]) .header h1,
+:global([data-theme="light"]) .header p {
+    color: #242424;
 }

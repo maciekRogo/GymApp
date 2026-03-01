@@ -29,6 +29,7 @@ File: `src/Components/css/Reports.module.css` */
     max-width: 1120px;
     margin: 0 auto;
     box-sizing: border-box;
+    color: var(--text-color);
 }
 
 /* zachowujemy oryginalne style, ale upewniamy się, że wewnętrzne elementy korzystają z pełnej szerokości kontenera */
@@ -52,7 +53,9 @@ File: `src/Components/css/Reports.module.css` */
     color: var(--muted);
     font-size: 0.95rem;
 }
-
+.subtitle, .cardMeta, .footer {
+    color: var(--muted-text);
+}
 .actions {
     display: flex;
     gap: 12px;
@@ -86,9 +89,7 @@ File: `src/Components/css/Reports.module.css` */
 
 /* report card similar to other components */
 .card {
-    background: var(--card-bg);
     border-radius: var(--radius);
-    border: 1px solid var(--border);
     box-shadow: 0 6px 18px rgba(0,0,0,0.45);
     padding: 14px;
     box-sizing: border-box;
@@ -96,6 +97,8 @@ File: `src/Components/css/Reports.module.css` */
     flex-direction: column;
     justify-content: center;
     min-height: 110px;
+    background: var(--card-bg-gradient);
+    border: 1px solid var(--border-color);
 }
 
 .cardTitle {

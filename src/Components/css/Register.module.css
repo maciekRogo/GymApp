@@ -1,16 +1,16 @@
 /* css
 File: `src/Components/css/Register.module.css` */
 
-/* zmienne dla szybkiej kontroli odstępów */
+
 :root {
     --page-padding-vertical: 18px;
     --page-padding-horizontal: 10px;
-    --gap: 20px; /* domyślny odstęp między sekcjami */
+    --gap: 20px;
     --logo-bottom-gap: 6px; /* mniejszy odstęp pod logo */
     --max-grid-width: 980px;
 }
 
-/* kontener całej strony */
+
 .container {
     width: 100%;
     margin: 0 auto;
@@ -18,10 +18,11 @@ File: `src/Components/css/Register.module.css` */
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #F5F5F5;
+    color: var(--text-color);
     transform: none;
     padding: var(--page-padding-vertical) var(--page-padding-horizontal);
     box-sizing: border-box;
+
 }
 
 /* logo u góry, wyśrodkowane; mniejszy odstęp od dołu niż reszta */
