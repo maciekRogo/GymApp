@@ -70,7 +70,6 @@ export default function Quote({ size = 260 }) {
     const idx = getDayIndex(quotes.length);
     const q = quotes[idx] || { text: 'Brak cytatu', author: '' };
 
-    // size wykorzystany tylko jako minimalna wysokość (opcjonalnie)
     const inlineStyle = { minHeight: `${size}px` };
 
     return (
