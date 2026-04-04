@@ -14,3 +14,29 @@
     transform: translateY(-3px);
     box-shadow: 0 10px 22px rgba(74,158,255,0.22);
 }
+
+.buttonChange{
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.buttonChange:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(74,158,255,0.22);
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.input{
+    transition: border-color 0.3s ease;
+
+}

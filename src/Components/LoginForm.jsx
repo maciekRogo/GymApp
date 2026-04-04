@@ -3,7 +3,6 @@ import style from "../Components/css/RegisterForm.module.css";
 import auth from "../Api/Auth.js";
 
 const LoginForm = () => {
-    // const [fullname, setFullname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -15,7 +14,6 @@ const LoginForm = () => {
         setLoading(true);
         setError(null);
         setMsg(null);
-        console.log(fullname, email, password);
 
         try {
             await auth.login({email, password});

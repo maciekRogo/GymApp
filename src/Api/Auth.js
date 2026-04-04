@@ -100,4 +100,15 @@ async function getProfile() {
     return res.data;
 }
 
-export default { register, login, getProfile, setToken, clearToken };
+async function updateProfile({ fullName, phone }) {
+    console.log('Updating profile with:', { fullName, phone });
+    const res = await api.put('/profile/me', { fullName, phone });
+    return res.data;
+}
+
+async function changePassword({ currentPassword, newPassword }) {
+    const res = await api.put('/profile/change-password', { currentPassword, newPassword });
+    return res.data;
+}
+
+export default { register, login, getProfile, setToken, clearToken , updateProfile, changePassword};
