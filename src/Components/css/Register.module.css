@@ -12,8 +12,8 @@ File: `src/Components/css/Register.module.css` */
 
 
 .container {
-    width: 100%;
-    margin: 0 auto;
+    width: 80vw;
+    margin: 0 5%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;

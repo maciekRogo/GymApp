@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Nav from "../Components/Nav.jsx";
 import profile_pic from "../Components/img/porfile_picture_default.jpg"
+import style from "../Components/css/Settings.module.css";
 //co do bledow z chata to sie je przeglada a jak juz wystepuja to rzadko, a tak poza tym to powiedz jakie bledy a sie je naprawi a nie narzekasz bezsensownie tym bardziej ZE JEDYNY BLAD TO PIEPRZONA IKONA KTORA BYLA ZAZNACZONA W KOMENTARZACH BO INACZEJ MIALBYS 1000 WIECEJ BLEDOW, ale ogolnie rozumiem ze mogles nie zrozumiec bo jak widzisz randomowy link do byle czego to juz masz zawal serca i z niczym ci sie nie kojarzu jednak to bylo najlepsze rozwiazanie na "szybko:
 
 // ogolnie to kod jest nieprzejrzysty ale nie chcialem robic smietnika w globalnym css bez wstepnych, ogolnie na rozmiar tego projektu ograniczyl bym sie do prostej moze czasami bardziej pracochlonnej strukturu bo sama analiza tych cssow zajmuje wiecej czasu niz robienie ich na "rzeznika"
@@ -45,6 +46,11 @@ const Settings = () => {
         cursor: "pointer"
     };
 
+    const logOut = () =>{
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+    }
+
     return (
         <div>
             <Nav />
@@ -85,9 +91,15 @@ const Settings = () => {
                             onChange={(e) => setNotifications(e.target.checked)}
                         />
                         <label htmlFor="notifications">Powiadomienia e-mail</label>
+
                     </div>
+                    <button className={style.button} onClick={logOut}>
+                        Wyloguj się
+                    </button>
                 </div>
+
             </div>
+
         </div>
     );
 };

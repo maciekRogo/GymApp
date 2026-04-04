@@ -7,6 +7,8 @@ File: `src/Components/css/Reports.module.css` */
     --text: #F5F5F5;
     --muted: rgba(245,245,245,0.7);
     --accent: #4a9eff;
+    --red : #ff4d4d;
+    --red-shadow: rgba(255,77,77,0.18);
     --radius: 18px;
     --gap: 18px;
     --nav-height: 72px; /* dopasuj do wysokości Twojego navbaru */

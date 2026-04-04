@@ -1,0 +1,16 @@
+.button {
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 6px 14px var(--red-shadow);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(74,158,255,0.22);
+}

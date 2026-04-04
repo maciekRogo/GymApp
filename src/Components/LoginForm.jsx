@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import style from '../Components/css/RegisterForm.module.css';
-import auth from '../api/auth';
+import React, {useState} from 'react';
+import style from "../Components/css/RegisterForm.module.css";
+import auth from "../Api/Auth.js";
 
-const RegisterForm = () => {
-    const [fullname, setFullname] = useState('');
+const LoginForm = () => {
+    // const [fullname, setFullname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -18,13 +18,12 @@ const RegisterForm = () => {
         console.log(fullname, email, password);
 
         try {
-            await auth.register({ fullname, email, password, role: 'Client' });
-            setMsg('Zarejestrowano. Przekierowanie do logowania...');
-            setTimeout(() => (window.location.href = '/login'), 1000);
+            await auth.login({email, password});
+            setMsg('Zalogowano!');
+            setTimeout(() => (window.location.href = '/'), 1000);
         } catch (err) {
             console.error(err);
-            // korzystaj z err.message, bo `Auth.js` teraz rzuca Error z czytelnym komunikatem
-            const friendly = err?.message || err?.response?.data?.message || 'Błąd rejestracji';
+            const friendly = err?.message || err?.response?.data?.message || 'Błąd logowania';
             setError(friendly);
         } finally {
             setLoading(false);
@@ -33,18 +32,10 @@ const RegisterForm = () => {
 
     return (
         <div className={style.naglowek}>
-            <h1>Rejestracja</h1>
+            <h1>Logowanie</h1>
             <form className={style.form} onSubmit={handleSubmit}>
-                <a href="/login">Login</a>
+                <a href="/register">Nie masz konta? Utwórz je!</a>
 
-                <input
-                    type="text"
-                    placeholder="Full Name"
-                    className={style.input}
-                    value={fullname}
-                    onChange={(e) => setFullname(e.target.value)}
-                    required
-                />
 
                 <input
                     type="email"
@@ -66,7 +57,7 @@ const RegisterForm = () => {
                 />
 
                 <button type="submit" className={style.button} disabled={loading}>
-                    {loading ? 'Rejestruję...' : 'Register'}
+                    {loading ? 'Loguję...' : 'Zaloguj się'}
                 </button>
 
                 {msg && <div style={{ color: 'green', marginTop: 8 }}>{msg}</div>}
@@ -76,4 +67,4 @@ const RegisterForm = () => {
     );
 };
 
-export default RegisterForm;
+export default LoginForm;
