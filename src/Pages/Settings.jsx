@@ -143,6 +143,9 @@ const Settings = () => {
                         <p style={{ margin: 0, color: "var(--muted-text)" }}>{userRole || "Ładowanie..."}</p>
                         <p style={{ margin: 0, color: "var(--muted-text)" }}>Licencja: {userLicense || "Ładowanie..."}</p>
                         <p style={{ margin: 0, color: "var(--muted-text)" }}>Nr Telefonu: {userPhone || "Brak"}</p>
+                        <button className={style.button} onClick={logOut}>
+                            Wyloguj się
+                        </button>
                     </div>
                 </div>
 
@@ -200,9 +203,7 @@ const Settings = () => {
                         <label htmlFor="notifications">Powiadomienia e-mail</label>
                     </div>
 
-                    <button className={style.button} onClick={logOut}>
-                        Wyloguj się
-                    </button>
+
                 </div>
             </div>
         </div>
