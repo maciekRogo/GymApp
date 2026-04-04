@@ -17,7 +17,9 @@ const Settings = () => {
     const [oldPassword,setOldPassword] = useState("");
     const [newPassword,setNewPassword] = useState("");
     const [msg, setMsg] = useState(null);
+    const [msg2, setMsg2] = useState(null);
     const [error, setError] = useState(null);
+    const [error2, setError2] = useState(null);
     const [theme, setTheme] = useState("Ciemny");
     const [language, setLanguage] = useState("Polski");
     const [notifications, setNotifications] = useState(true);
@@ -106,13 +108,24 @@ const Settings = () => {
 
     const changeInfo = async () => {
         try {
-            await auth.updateProfile({ fullName: userNewName, phone: userNewPhone });
-            setUserName(userNewName);
-            setUserPhone(userNewPhone);
-            setMsg("Informacje zostały zaktualizowane!");
+            const fullName = (typeof userNewName === 'string' && userNewName.trim() !== '')
+                ? userNewName.trim()
+                : userName;
+            const phone = (userNewPhone !== null && String(userNewPhone).trim() !== '')
+                ? String(userNewPhone).trim()
+                : userPhone;
 
+            const payload = { fullName, phone };
+            await auth.updateProfile(payload);
+
+            setUserName(fullName);
+            setUserPhone(phone);
+            setUserNewName(fullName);
+            setUserNewPhone(phone);
+
+            setMsg('Informacje zostały zaktualizowane!');
         } catch (err) {
-            const friendly = 'Błąd logowania';
+            const friendly = err?.response?.data?.message || err?.message || 'Nie udało się zaktualizować informacji.';
             setError(friendly);
         }
     };
@@ -120,11 +133,11 @@ const Settings = () => {
     const changePassword = async () => {
         try{
             await auth.changePassword(oldPassword, newPassword);
-            setMsg("Hasło zostało zmienione!");
+            setMsg2("Hasło zostało zmienione!");
 
         } catch (err){
             const friendly = 'Błąd logowania';
-            setError(friendly);
+            setError2(friendly);
         }
 
     }
@@ -170,8 +183,8 @@ const Settings = () => {
                         <button className={style.buttonChange} onClick={changePassword}>
                             Zapisz zmiany
                         </button>
-                        {msg && <div className={style.input}  style={{ color: 'green', marginTop: 8 }}>{msg}</div>}
-                        {error && <div className={style.input}  style={{ color: 'red', marginTop: 8 }}>{error}</div>}
+                        {msg2 && <div className={style.input}  style={{ color: 'green', marginTop: 8 }}>{msg2}</div>}
+                        {error2 && <div className={style.input}  style={{ color: 'red', marginTop: 8 }}>{error2}</div>}
                     </div>
                 </div>
 
