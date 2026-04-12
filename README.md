@@ -1,5 +1,8 @@
 # 🏋️‍♂️ Gym Management System  
 
+**BACKEND LINK**
+https://github.com/LS0leq/GymApp_Backend
+
 Aplikacja do zarządzania siłownią stworzona w **C#**.  
 System wspiera **klientów**, **trenerów** oraz **administratorów**, ułatwiając obsługę zapisów, planów treningowych, płatności oraz zarządzanie użytkownikami i zasobami siłowni.  
 
