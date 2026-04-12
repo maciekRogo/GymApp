@@ -1,5 +1,3 @@
-
-
 .container {
     display: flex;
     flex-direction: column;
@@ -30,20 +28,14 @@
 }
 
 .progress-value {
-    animation: load 3s normal forwards;
+    /* usunalemm to bo inaczej progressbar nie dzialal dla 0% -> animation: load 3s normal forwards */
+
+
     box-shadow: 0 10px 40px -10px #00A3FF;
     border-radius: 100px;
     background: #00A3FF;
     height: 3vh;
-    width: 0;
-}
 
-h2 {
-    font-size: 2vh;
-    margin-bottom: 1vh;
-}
-
-@keyframes load {
-    0% { width: 0; }
-    100% { width: 75%; }
+    /*Płynne ładowanie i takie tam */
+    transition: width 1.5s ease-in-out;
 }

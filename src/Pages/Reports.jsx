@@ -1,28 +1,12 @@
-// File: src/Pages/Reports.jsx
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import Nav from "../Components/Nav.jsx";
 import style from "../Components/css/Reports.module.css";
 
-const currentUser = "Robert Świder";
-
-const sampleWorkouts = [
-    { id: 1, user: "Kasia", exercise: "Przysiady", duration: 50, calories: 420, date: "2026-02-21" },
-    { id: 2, user: "Michał", exercise: "Martwy ciąg", duration: 60, calories: 560, date: "2026-02-20" },
-    { id: 3, user: "Ania", exercise: "Wyciskanie", duration: 40, calories: 360, date: "2026-02-19" },
-    { id: 4, user: "Robert Świder", exercise: "Przysiady", duration: 45, calories: 380, date: "2026-02-18" },
-    { id: 5, user: "Robert Świder", exercise: "HIIT", duration: 30, calories: 320, date: "2026-02-17" },
-];
-
-const topExercises = [
-    { name: "Przysiady", count: 412 },
-    { name: "Martwy ciąg", count: 305 },
-    { name: "Wyciskanie", count: 289 },
-];
-
 const formatDate = (d) => new Date(d).toLocaleDateString();
 
-const exportCSV = (rows) => {
-    const headers = ["id","user","exercise","duration_min","calories","date"];
+// używa nazwy pobranej z backendu (czyli ta aktualizacja tego co wczesniej nie dzialalo jakby ktos nie pamietal)
+const exportCSV = (rows, userName) => {
+    const headers = ["id", "user", "exercise", "duration_min", "calories", "date"];
     const csv = [
         headers.join(","),
         ...rows.map(r => `${r.id},${r.user},${r.exercise},${r.duration},${r.calories},${r.date}`)
@@ -31,7 +15,7 @@ const exportCSV = (rows) => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `reports_Robert_Swider_${new Date().toISOString().slice(0,10)}.csv`;
+    a.download = `raport_${userName.replace(" ", "_")}_${new Date().toISOString().slice(0, 10)}.csv`;
     a.click();
     URL.revokeObjectURL(url);
 };
@@ -40,23 +24,61 @@ const Reports = () => {
     const [from, setFrom] = useState("");
     const [to, setTo] = useState("");
 
-    const byDate = useMemo(() => {
-        if (!from && !to) return sampleWorkouts;
-        const fromT = from ? new Date(from) : null;
-        const toT = to ? new Date(to) : null;
-        return sampleWorkouts.filter(w => {
-            const d = new Date(w.date);
-            if (fromT && d < fromT) return false;
-            if (toT && d > toT) return false;
-            return true;
-        });
-    }, [from, to]);
+    //  NASZE STANY NA DANE Z BACKENDU
+    const [workouts, setWorkouts] = useState([]);
+    const [topExercises, setTopExercises] = useState([]); // Dodane, by dół strony nie zgłaszał błędu!
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [userName, setUserName] = useState("Ładowanie..."); // Imię zalogowanego
 
-    // Zawsze pokazujemy tylko treningi bieżącego użytkownika
+    //  POBIERANIE DANYCH Z BACKENDU
+    useEffect(() => {
+        const fetchReports = async () => {
+            setIsLoading(true);
+            try {
+                const token = localStorage.getItem('token');
+
+                const response = await fetch('https://localhost:7061/api/stats/reports', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (!response.ok) throw new Error("Błąd pobierania danych z bazy.");
+
+                const data = await response.json();
+                setWorkouts(data.workouts);
+
+
+                if (data.topExercises) setTopExercises(data.topExercises);
+
+                if (data.workouts.length > 0) {
+                    setUserName(data.workouts[0].user);
+                } else {
+                    setUserName("Brak treningów");
+                }
+
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchReports();
+    }, []);
+
+    // --- FILTROWANIE DANYCH ---
+    // nie musimy filtrować po uzytkowniku, bo backend wysyla nam tylko nasze treningi
     const displayedWorkouts = useMemo(() => {
-        return byDate.filter(w => w.user === currentUser);
-    }, [byDate]);
+        if (!from && !to) return workouts;
+        return workouts.filter(w => {
+            const wDate = new Date(w.date);
+            const fDate = from ? new Date(from) : new Date("1970-01-01");
+            const tDate = to ? new Date(to) : new Date("2100-01-01");
+            return wDate >= fDate && wDate <= tDate;
+        });
+    }, [workouts, from, to]);
 
+    // to ponizej liczy statystyki
     const stats = useMemo(() => {
         const total = displayedWorkouts.length;
         const totalCalories = displayedWorkouts.reduce((s, w) => s + (w.calories || 0), 0);
@@ -64,13 +86,17 @@ const Reports = () => {
         return { total, totalCalories, avgDuration };
     }, [displayedWorkouts]);
 
+    // ekrany ładowania
+    if (isLoading) return <div style={{ color: "white", padding: 20 }}>Ładowanie statystyk...</div>;
+    if (error) return <div style={{ color: "red", padding: 20 }}>Błąd: {error}</div>;
+
     return (
         <div>
             <Nav />
             <div className={style.page}>
                 <div className={style.header}>
                     <div>
-                        <h1 className={style.title}>Raporty — {currentUser}</h1>
+                        <h1 className={style.title}>Raporty — {userName}</h1>
                         <p className={style.subtitle}>Widok tylko moich treningów. Filtruj po dacie lub eksportuj CSV.</p>
                     </div>
                     <div className={style.actions}>
@@ -83,7 +109,7 @@ const Reports = () => {
                         <div style={{display: "flex", gap: 8, alignItems: "center"}}>
                             <button
                                 className={style.exportBtn}
-                                onClick={() => exportCSV(displayedWorkouts)}
+                                onClick={() => exportCSV(displayedWorkouts, userName)}
                             >
                                 Eksportuj CSV
                             </button>
@@ -95,7 +121,7 @@ const Reports = () => {
                     <div className={style.card}>
                         <h3 className={style.cardTitle}>Moje treningi</h3>
                         <p className={style.cardValue}>{stats.total}</p>
-                        <div className={style.cardMeta}>Treningi użytkownika Robert Świder</div>
+                        <div className={style.cardMeta}>Treningi użytkownika {userName}</div>
                     </div>
 
                     <div className={style.card}>
@@ -112,7 +138,7 @@ const Reports = () => {
 
                     <div className={style.card}>
                         <h3 className={style.cardTitle}>Użytkownik</h3>
-                        <p className={style.cardValue}>{currentUser}</p>
+                        <p className={style.cardValue}>{userName}</p>
                         <div className={style.cardMeta}>Statystyki osobiste</div>
                     </div>
                 </div>
@@ -121,7 +147,7 @@ const Reports = () => {
                     <div className={style.card}>
                         <h3 className={style.cardTitle}>Top ćwiczenia (globalnie)</h3>
                         <div style={{display: "flex", flexDirection: "column", gap: 10, marginTop: 8}}>
-                            {topExercises.map((ex, idx) => {
+                            {topExercises.length > 0 ? topExercises.map((ex, idx) => {
                                 const pct = Math.min(100, Math.round((ex.count / topExercises[0].count) * 100));
                                 return (
                                     <div key={idx} style={{display:"flex", justifyContent:"space-between", alignItems:"center", gap: 12}}>
@@ -135,7 +161,7 @@ const Reports = () => {
                                         <div style={{width:48, textAlign:"right", fontWeight:700}}>{pct}%</div>
                                     </div>
                                 );
-                            })}
+                            }) : <div style={{opacity:0.7}}>Brak danych o popularnych ćwiczeniach.</div>}
                         </div>
                     </div>
 
