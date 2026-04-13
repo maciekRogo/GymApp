@@ -1,4 +1,4 @@
-#Gym Management System  
+Gym Management System  
 
 **BACKEND LINK**
 https://github.com/LS0leq/GymApp_Backend
