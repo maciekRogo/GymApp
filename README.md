@@ -35,3 +35,48 @@ Diagram klas:
 
 <img width="1031" height="1600" alt="Diagram_klas drawio" src="https://github.com/user-attachments/assets/e9994fed-8aad-48d1-ab5a-fc2a643570e3" />
 
+
+**Struktury obejmujace Gitignore:**
+
+
+.NET Core
+[Bb]in/
+[Oo]bj/
+*.user
+*.userosscache
+*.sln.docstates
+
+SQLite
+*.db
+*.db-shm
+*.db-wal
+
+IDE - JetBrains
+.idea/
+*.sln.iml
+Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+Production
+dist/
+build/
+
+Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+Local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+Root gitignore
+/node_modules/
+/bin/
+/obj/
+/dist/
+.idea/
+backend/gym.db
